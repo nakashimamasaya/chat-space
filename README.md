@@ -3,6 +3,7 @@
 ## messages table
 
 belongs_to :user
+
 belongs_to :group
 
 |column| type | Restriction |
@@ -16,6 +17,7 @@ belongs_to :group
 ## users table
 
 has_many :messages , through :users_groups 
+
 has_many :groups 
 
 |column|type|Restriction|
@@ -28,6 +30,7 @@ has_many :groups
 ## groups table
 
 has_many :messages , through :users_groups
+
 has_many :users
 
 
@@ -39,9 +42,12 @@ has_many :users
 ## users_groups table
 
 belongs_to :user
+
 belongs_to :group
 
 |column|type|Restriction|
 |:--:|:--:|:--:|
 |user_id|integer|foreign_key: true|
 |group_id|integer|foreign_key: true|
+
+
