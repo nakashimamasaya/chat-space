@@ -36,3 +36,12 @@ has_many :users
 |name|text|null:false , uniqe:true|
 
 
+## users_groups table
+
+belongs_to :user
+belongs_to :group
+
+|column|type|Restriction|
+|:--:|:--:|:--:|
+|user_id|integer|foreign_key: true|
+|group_id|integer|foreign_key: true|
