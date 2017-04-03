@@ -16,7 +16,7 @@ belongs_to :group
 
 ## users table
 
-has_many :messages , through :users_groups 
+has_many :messages , through: :users_groups 
 
 has_many :groups 
 
@@ -29,7 +29,7 @@ has_many :groups
 
 ## groups table
 
-has_many :messages , through :users_groups
+has_many :messages , through: :users_groups
 
 has_many :users
 
