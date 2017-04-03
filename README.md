@@ -23,3 +23,16 @@ has_many :groups
 |name|text|null:false , add_index|
 |email|string|null:false , uniqe:true|
 |password|integer|null:false , foreign_key:true|
+
+
+## groups table
+
+has_many :messages , through :users_groups
+has_many :users
+
+
+|column|type|Restriction|
+|:--:|:--:|:--:|
+|name|text|null:false , uniqe:true|
+
+
