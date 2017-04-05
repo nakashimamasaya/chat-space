@@ -16,11 +16,11 @@ belongs_to :group
 
 ## users table
 
-has_many :messages , through: :users_groups 
+has_many :messages , through: :user_groups 
 
 has_many :groups
 
-has_many :users_groups
+has_many :user_groups
 
 |column|type|Restriction|
 |:--:|:--:|:--:|
@@ -29,11 +29,11 @@ has_many :users_groups
 
 ## groups table
 
-has_many :messages , through: :users_groups
+has_many :messages , through: :user_groups
 
 has_many :users
 
-has_many :users_groups
+has_many :user_groups
 
 
 |column|type|Restriction|
@@ -41,7 +41,7 @@ has_many :users_groups
 |name|text|null:false|
 
 
-## users_groups table
+## user_groups table
 
 belongs_to :user
 
