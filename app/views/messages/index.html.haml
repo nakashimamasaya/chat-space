@@ -1,0 +1,48 @@
+%p.notification チャットグループが作成されました
+
+.sidebar
+  .user
+    %h1.user__name naka
+    = link_to "#" , class: "user__icon lg" do
+      = fa_icon "cog"
+    = link_to "#" , class: "user__icon lg" do
+      = fa_icon "pencil-square-o"
+  .group
+    %ul.group__list
+      %li.group__list__name
+        %h2 sample
+        %p  難しい
+      %li.group__list__name
+        %h2 naka
+        %p  bye world
+      %li.group__list__name
+        %h2 aeaaaaaaa
+        %p  まだメッセージがありません
+
+.chat-area
+  .group-space
+    .group-space__content
+      %h1 sample
+      %p Members: kawa naka hoge
+    = link_to "Edit","#",class: "group-space__edit"
+  .chat-space
+    #ul.messages
+      #li.messages__name
+        naka
+      #li.messages__date
+        2017/04/14 08:54:58
+      #li.messages__text
+        難しい
+      #li.messages__name
+        kawa
+      #li.messages__date
+        2017/04/14 08:54:59
+      #li.messages__text
+        難しい
+    .post-space
+      = form_for(@messages) do |f|
+        = f.text_area :body , placeholder: "type a message", class: "post-space__text"
+        = f.label :image , class: "post-space__image" do
+          = fa_icon "picture-o"
+        = f.file_field :image , class: "post-space__image" , style: "display:none;"
+        = f.submit "Send" , class: "post-space__button"
