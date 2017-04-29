@@ -8,9 +8,9 @@
     = csrf_meta_tags
   %body
     -if notice
-      %p.notice
+      %p.flash-message-notice
         =notice
     -if alert
-      %p.alert
+      %p.flash-message-alert
         =alert
     = yield
