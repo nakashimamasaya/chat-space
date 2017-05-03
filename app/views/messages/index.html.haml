@@ -7,15 +7,11 @@
       = fa_icon "pencil-square-o"
   .group
     %ul.group__list
-      %li.group__list__name
-        %h2 sample
-        %p  難しい
-      %li.group__list__name
-        %h2 naka
-        %p  bye world
-      %li.group__list__name
-        %h2 aeaaaaaaa
-        %p  まだメッセージがありません
+      - @groups.each do |group|
+        %li.group__list__name
+          %h2
+            = group.name
+          %p まだメッセージはありません
 
 .chat-area
   .group-space
