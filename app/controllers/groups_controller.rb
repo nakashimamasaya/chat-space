@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    @groups = User.all
+    @users = User.all
   end
 
   def create
