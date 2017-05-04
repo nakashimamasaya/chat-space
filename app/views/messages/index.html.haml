@@ -1,22 +1,14 @@
 .sidebar
   .user
-    %h1.user__name naka
-    = link_to "#" , class: "user__icon lg" do
+    %h1.user__name
+      = current_user.name
+    = link_to edit_user_registration_path , class: "user__icon lg" do
       = fa_icon "cog"
-    = link_to "#" , class: "user__icon lg" do
+    = link_to new_group_path , class: "user__icon lg" do
       = fa_icon "pencil-square-o"
   .group
     %ul.group__list
-      %li.group__list__name
-        %h2 sample
-        %p  難しい
-      %li.group__list__name
-        %h2 naka
-        %p  bye world
-      %li.group__list__name
-        %h2 aeaaaaaaa
-        %p  まだメッセージがありません
-
+      = render partial: "group-lists", collection: @groups, as: :group
 .chat-area
   .group-space
     .group-space__content
