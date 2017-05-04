@@ -7,8 +7,4 @@
     = fa_icon "pencil-square-o"
 .group
   %ul.group__list
-    - groups.each do |group|
-      %li.group__list__name
-        %h2
-          = group.name
-        %p まだメッセージはありません
+    = render partial: "group-lists",collection: groups,as: :group
