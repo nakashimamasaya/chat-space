@@ -8,29 +8,22 @@
       = fa_icon "pencil-square-o"
   .group
     %ul.group__list
-      = render partial: "group-lists", collection: @groups, as: :group
+      = render partial: "common/group-lists", collection: @groups, as: :group
 .chat-area
   .group-space
     .group-space__content
-      %h1 sample
-      %p Members: kawa naka hoge
-    = link_to "Edit","#",class: "group-space__edit"
+      %h1
+        =@group.name
+      %p
+        Members:
+        -@group.users.each do |member|
+          ="#{member.name}"
+    = link_to "Edit",edit_group_path(params[:group_id]) ,class: "group-space__edit"
   .chat-space
     #ul.messages
-      #li.messages__name
-        naka
-      #li.messages__date
-        2017/04/14 08:54:58
-      #li.messages__text
-        難しい
-      #li.messages__name
-        kawa
-      #li.messages__date
-        2017/04/14 08:54:59
-      #li.messages__text
-        難しい
+      =render @messages
     .post-space
-      = form_for(@messages) do |f|
+      = form_for [@group, @message] do |f|
         = f.text_area :body , placeholder: "type a message", class: "post-space__text"
         = f.label :image , class: "post-space__image" do
           = fa_icon "picture-o"
