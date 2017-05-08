@@ -2,4 +2,8 @@
   %li.group__list__name
     %h2
       =group.name
-    %p まだメッセージはありません
+    %p
+      - if group.messages[0]
+        ="#{group.messages[0].body}"
+      - else
+        まだメッセージはありません

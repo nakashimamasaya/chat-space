@@ -10,6 +10,11 @@ html,body{
   color: $white;
 }
 
+a{
+  color:$white;
+  text-decoration: none;
+}
+
 .user{
   background-color:$dark-navy;
   padding:50px 20px;
