@@ -3,7 +3,7 @@
     %h2
       =group.name
     %p
-      - if group.messages[0]
-        ="#{group.messages[0].body}"
+      - if group.messages.last
+        ="#{group.messages.last.body}"
       - else
         まだメッセージはありません
