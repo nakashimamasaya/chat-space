@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
     @groups = current_user.groups
     @message = Message.new
     @messages = @group.messages
+    @group_members = @group.users
   end
 
   def create

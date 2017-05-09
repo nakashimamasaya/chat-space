@@ -16,9 +16,9 @@
         =@group.name
       %p
         Members:
-        -@group.users.each do |member|
+        -@group_members.each do |member|
           ="#{member.name}"
-    = link_to "Edit",edit_group_path(params[:group_id]) ,class: "group-space__edit"
+    = link_to "Edit",edit_group_path(@group.id) ,class: "group-space__edit"
   .chat-space
     #ul.messages
       =render @messages
