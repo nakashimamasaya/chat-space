@@ -1,0 +1,11 @@
+.sidebar
+  .user
+    %h1.user__name
+      = current_user.name
+    = link_to edit_user_registration_path , class: "user__icon lg" do
+      = fa_icon "cog"
+    = link_to new_group_path , class: "user__icon lg" do
+      = fa_icon "pencil-square-o"
+  .group
+    %ul.group__list
+      = render partial: "common/group-lists", collection: @groups, as: :group
