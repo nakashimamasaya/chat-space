@@ -4,8 +4,10 @@ describe MessagesController do
 
   let(:user){create(:user)}
   let(:group){user.groups.first}
+  let(:groups){user.groups}
   let(:message){user.messages}
   let(:messages){create_list(user.messages, 3)}
+  let(:group_members){group.users}
 
   before do
     sign_in user
@@ -26,7 +28,6 @@ describe MessagesController do
     end
 
     it "assign the requested current_group to @groups" do
-      groups = user.groups
       expect(assigns(:groups)).to match groups
     end
 
@@ -35,7 +36,6 @@ describe MessagesController do
     end
 
     it "assign the requested current_group to @group_members" do
-      group_members = group.users
       expect(assigns(:group_members)).to match group_members
     end
 
