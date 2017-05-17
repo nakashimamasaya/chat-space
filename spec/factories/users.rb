@@ -6,5 +6,11 @@ FactoryGirl.define do
     sequence(:email) { |n| "user#{n}@test2.com" }
     password                  sample_password
     password_confirmation     sample_password
+
+    after(:create) do |user|
+      tmp_group = create(:group)
+      create(:user_group, user: user, group: tmp_group)
+      create(:message, user: user, group: tmp_group)
+    end
   end
 end
