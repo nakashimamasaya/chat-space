@@ -3,9 +3,9 @@ require 'rails_helper'
 describe MessagesController do
 
   let(:user){create(:user)}
-  let(:group){create(:group)}
-  let(:message){create(:message, group_id: group.id, user_id: user.id)}
-  let(:messages){create_list(:message, 3, group_id: group.id, user_id: user.id)}
+  let(:group){user.groups.first}
+  let(:message){user.messages}
+  let(:messages){create_list(user.messages, 3)}
 
   before do
     sign_in user
@@ -26,12 +26,17 @@ describe MessagesController do
     end
 
     it "assign the requested current_group to @groups" do
-      groups = create_list(:group, 3)
-      expect(assigns(:groups)).to match user.groups
+      groups = user.groups
+      expect(assigns(:groups)).to match groups
     end
 
     it "assign the requested current_group to @messages" do
       expect(assigns(:messages)).to match group.messages
+    end
+
+    it "assign the requested current_group to @group_members" do
+      group_members = group.users
+      expect(assigns(:group_members)).to match group_members
     end
 
   end
