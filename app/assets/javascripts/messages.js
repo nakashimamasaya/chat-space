@@ -28,7 +28,10 @@ $(function() {
 
   $('.js-form').on('submit', function(e) {
     e.preventDefault();
-    flashMessage.remove() if (var flashMessage = $('.flash-message-notice') || flashMessage = $('.flash-message-alert'));
+    var flashMessage = [$('.flash-message-notice'),$('.flash-message-alert')];
+    for(var i = 0; i < 2; i++)
+      if (flashMessage[i] != undefined)
+        flashMessage[i].remove()
     var textField = $('.post-space__text');
     var message = textField.val();
     $.ajax({
