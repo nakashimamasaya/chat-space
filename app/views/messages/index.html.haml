@@ -21,9 +21,10 @@
     = link_to "Edit",edit_group_path(@group.id) ,class: "group-space__edit"
   .chat-space
     #ul.messages
-      =render @messages
+      .messages__list
+        =render @messages
     .post-space
-      = form_for [@group, @message] do |f|
+      = form_for [@group, @message], html: { class: 'js-form' } do |f|
         = f.text_area :body , placeholder: "type a message", class: "post-space__text"
         = f.label :image , class: "post-space__image" do
           = fa_icon "picture-o"
