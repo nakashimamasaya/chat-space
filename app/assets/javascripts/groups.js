@@ -10,7 +10,7 @@ $(function() {
   function removeHTML(name, id) {
     var html = `<li class="chat-group-user">
                   <div class="chat-group-user__name">${ name }</div>
-                  <div class="chat-group-user__btn chat-group-user__btn--remove">削除</div>
+                  <div class="chat-group-user__btn chat-group-user__btn--remove" data-name="${ name }" data-id="${ id }">削除</div>
                   <input type='hidden' value="${ id }" name="group[user_ids][]">
                 </li>`;
     return html;
@@ -25,6 +25,8 @@ $(function() {
   });
 
   $(document).on('click', '.chat-group-user__btn--remove', function(e){
+     var user = {name: $(this).data('name'), id: $(this).data('id')};
+     $("#user-search-result").append(buildHTML(user));
     $(this).parent().remove();
   });
 
