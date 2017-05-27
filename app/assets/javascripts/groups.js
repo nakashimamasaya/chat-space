@@ -21,6 +21,7 @@ $(function() {
     var id = $(this).data('id');
     var removeHtml = removeHTML(name,id);
     $('#chat-group-users').append(removeHtml);
+    $(this).parent().remove();
   });
 
   $(document).on('click', '.chat-group-user__btn--remove', function(e){
@@ -28,7 +29,7 @@ $(function() {
   });
 
   var beforeWord = "";
-  $('#user-search-field').on('keyup', function(e) {
+  $('#user_ids').on('keyup', function(e) {
     var keyword = $(this).val();
     if(beforeWord != keyword){
       beforeWord = keyword;
