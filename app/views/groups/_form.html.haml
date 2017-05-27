@@ -1,4 +1,4 @@
-= form_for group, remote: true do |f|
+= form_for group do |f|
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       =f.label :name, "グループ名", class: "chat-group-form__label"
@@ -6,14 +6,14 @@
       =f.text_field :name, placeholder: "グループ名を入力してください", class: "chat-group-form__input"
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
-      =f.label :user_ids, "チャットメンバーを追加", class: "chat-group-form__label"
+      =label :user, :ids, "チャットメンバーを追加", class: "chat-group-form__label"
     .chat-group-form__field--right
       .chat-group-form__search.clearfix
-        %input#user-search-field.chat-group-form__input{placeholder: "追加したいユーザー名を入力してください", type: "text"}
+        %input#user-search-field#user_ids.chat-group-form__input{placeholder: "追加したいユーザー名を入力してください", type: "text"}
       #user-search-result
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
-      =f.label :name, "チャットメンバー", class: "chat-group-form__label"
+      =f.label "チャットメンバー", class: "chat-group-form__label"
     .chat-group-form__field--right
       #chat-group-users
         #chat-group-user-22.chat-group-user.clearfix
