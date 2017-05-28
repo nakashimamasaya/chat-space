@@ -8,15 +8,15 @@ CarrierWave.configure do |config|
     provider: 'AWS',
     aws_access_key_id: ENV['ACCESS_KEY_ID'],
     aws_secret_access_key: ENV['SECRET_ACCESS_KEY'],
-    region: 'us-east-1'
+    region: 'us-east-2'
   }
 
     case Rails.env
     when 'development'
-        config.fog_directory  = 'chat-spece-pi'
-        config.asset_host = 'https://s3.amazonaws.com/chat-spece-pi'
+        config.fog_directory  = 'chat-space-n'
+        config.asset_host = 'https://s3.us-east-2.amazonaws.com/chat-space-n'
     when 'production'
-        config.fog_directory  = 'chat-spece-pi'
-        config.asset_host = 'https://s3.amazonaws.com/chat-spece-pi'
+        config.fog_directory  = 'chat-space-n'
+        config.asset_host = 'https://s3.us-east-2.amazonaws.com/chat-space-n'
     end
 end
