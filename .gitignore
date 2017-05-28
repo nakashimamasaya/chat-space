@@ -15,3 +15,10 @@
 /user-materials
 
 /group-materials
+
+.env
+
+*.jpg
+*.jpeg
+*.gif
+*.png
