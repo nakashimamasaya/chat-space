@@ -22,12 +22,12 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group_users = @group.users
+    @group_users = @group.users.where.not(id: current_user.id)
   end
 
   def update
     if @group.update(group_params)
-      redirect_to root_path, notice: "グループ更新成功"
+      redirect_to group_messages_path(params[:id]), notice: "グループ更新成功"
     else
       flash.now[:alert] = "グループ更新失敗"
       render action: :edit
