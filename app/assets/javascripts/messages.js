@@ -1,11 +1,16 @@
 $(function() {
   function buildHTML(message) {
+    var imageHTML = "";
+    if (message.image) {
+       imageHTML = `<img src= ${ message.image } alt= ${ message.image }>`;
+     };
     var html = `<div class="messages__name" id="li">
                   ${ message.name }
                 </div>
                 <div class="messages__date" id="li">
                   ${ message.date }
                 </div>
+                ${ imageHTML }
                 <div class="messages__text" id="li">
                   ${ message.body }
                 </div>`;
@@ -32,22 +37,19 @@ $(function() {
     for(var i = 0; i < 2; i++)
       if (flashMessage[i] != undefined)
         flashMessage[i].remove()
-    var textField = $('.post-space__text');
-    var message = textField.val();
+    var message = new FormData($('.js-form')[0]);
     $.ajax({
       type: 'POST',
       url: './messages',
-      data: {
-        message:{
-          body: message
-        }
-      },
-      dataType: 'json'
+      data: message,
+      dataType: 'json',
+      processData: false,
+      contentType: false
     })
-    .done(function(message) {
-      var html = buildHTML(message);
+    .done(function(data) {
+      var html = buildHTML(data);
       $('.messages__list').append(html);
-      var flash = buildFlashNotice(message);
+      var flash = buildFlashNotice(data);
       $('body').prepend(flash);
       $('.js-form')[0].reset();
     })
