@@ -10,13 +10,6 @@ CarrierWave.configure do |config|
     aws_secret_access_key: ENV['SECRET_ACCESS_KEY'],
     region: 'us-east-2'
   }
-
-    case Rails.env
-    when 'development'
-        config.fog_directory  = 'chat-space-n'
-        config.asset_host = 'https://s3.us-east-2.amazonaws.com/chat-space-n'
-    when 'production'
-        config.fog_directory  = 'chat-space-n'
-        config.asset_host = 'https://s3.us-east-2.amazonaws.com/chat-space-n'
-    end
+  config.fog_directory  = 'chat-space-n'
+  config.asset_host = 'https://s3.us-east-2.amazonaws.com/chat-space-n'
 end
