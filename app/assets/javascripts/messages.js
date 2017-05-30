@@ -60,4 +60,25 @@ $(function() {
     });
     return false;
   });
+
+  setInterval(update, 5000);
+
+  function update() {
+    if($('.post-space__text').val() != 0){
+      $.ajax({
+        type: 'GET',
+        url: './messages',
+        dataType: 'json'
+      })
+      .done(function(data) {
+        var html = "";
+        var messages = data.messages;
+        for(var i = $('.messages__name').length; i < messages.length; i++) html += buildHTML(messages[i]);
+        $('.messages__list').append(html);
+      })
+      .fail(function() {
+        alert("error");
+      });
+    }
+  }
 });
